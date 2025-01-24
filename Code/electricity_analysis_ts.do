@@ -1,5 +1,5 @@
 /*
-File: electricity_analysis.do
+File: electricity_analysis_ts.do
 Author: Mariam Raheem
 Date: January 22, 2025
 Purpose: Analyze electricity consumption patterns in California and Texas using EIA SEDS data
@@ -20,8 +20,9 @@ pause on
 	}
 	
 	// Define global macros for file paths
-	gl raw     = "Raw/"
+	gl raw     = "Data/"
 	gl clean   = "Output/"
+	gl visuals = "Output/Visuals"
 
 	// Import the SEDS data
 	import delimited "${raw}Complete_SEDS.csv", clear
@@ -201,7 +202,7 @@ graph combine ca_ac tx_ac, ///
     rows(1) ysize(10) xsize(20) name(combined_correlograms0, replace)
 
 * Export the combined graph
-graph export "$clean/combined_correlograms_cons.png", replace width(1600) height(900)
+graph export "$visuals/combined_correlograms_cons.png", replace width(1600) height(900)
 
 ********************************************************************************
 
@@ -218,7 +219,7 @@ graph combine ca_ac tx_ac, ///
     rows(1) ysize(10) xsize(20) name(combined_correlograms1, replace)
 
 * Export the combined graph
-graph export "$clean/combined_correlograms_price.png", replace width(1600) height(900)
+graph export "$visuals/combined_correlograms_price.png", replace width(1600) height(900)
 
 ********************************************************************************
 
@@ -235,7 +236,7 @@ graph combine ca_ac tx_ac, ///
     rows(1) ysize(10) xsize(20) name(combined_correlograms2, replace)
 
 * Export the combined graph
-graph export "$clean/combined_correlograms_exp.png", replace width(1600) height(900)
+graph export "$visuals/combined_correlograms_exp.png", replace width(1600) height(900)
 
 ********************************************************************************
 ********************************************************************************
@@ -256,7 +257,7 @@ ac ln_estxp if statecode=="CA", lags(20) ///
     name(ca_ac_annotated, replace)
 
 * Export the graph
-graph export "$clean_california_acf_annotated.png", replace width(1600) height(900)
+graph export "$visuals/california_acf_annotated.png", replace width(1600) height(900)
 /* 
 Remarks:
 1. The strong positive autocorrelation at lag 1 suggests high persistence in the series.
@@ -287,7 +288,7 @@ ac ln_estxp if statecode=="TX", lags(20) ///
     name(tx_ac_annotated, replace)
 
 * Export the graph
-graph export "$clean_texas_acf_annotated.png", replace width(1600) height(900)
+graph export "$visuals/texas_acf_annotated.png", replace width(1600) height(900)
 
 /* 
 Remarks:

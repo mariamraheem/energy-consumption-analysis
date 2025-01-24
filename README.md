@@ -64,16 +64,22 @@ This STATA script conducts:
 To run:
 
 1.  Ensure STATA is installed
-
-2.  Open STATA and navigate to the `/Code` directory
-
-3.  Run the command: `do electricity_analysis.do`
+2.  Navigate to the `/Code` directory
+    -   `electricity_analysis.do`: Cleans and prepares RECS data for
+        willingness to pay analysis (regressions)
+    -   `electricity_analysis_ts.do`: Cleans and prepares SEDS data for
+        a time series analysis
 
 ### Data Sources
+
+Primary datasets (public):
 
 -   U.S. Energy Information Administration (EIA) State Energy Data
     System (SEDS)
 -   Residential Energy Consumption Survey (RECS) 2020
+
+For assumptions and trends:
+
 -   American Community Survey (ACS) 2018-2022
 -   System Average Interruption Duration Index (SAIDI)
 
