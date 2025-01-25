@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # Electricity Consumption Analysis: California vs Texas
 
 ## Project Overview
